@@ -11,11 +11,13 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'WelcomeController');
 
-Route::get('/example', function () {
-    return 'hello there!';
-});
+/*Route::get('/books/{category}/{title}', function ($category, $title) {
+    return 'You are viewing the book:' .$title.' in the category '.$category;
+});*/
+
+Route::get('/books/{title}', 'BookController@show');
+Route::get('/books', 'BookController@index');
+
 
