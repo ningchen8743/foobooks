@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+    'supportEmail' => 'ning.chen.cathy@gmail.com',
     /*
     |--------------------------------------------------------------------------
     | Mail Driver
