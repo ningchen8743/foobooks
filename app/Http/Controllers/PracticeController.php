@@ -22,7 +22,7 @@ class PracticeController extends Controller
      */
     public function practice2()
     {
-        dump(config('mail.supportEmail'));
+        dump(config('mail'));
 
         # Disabling this line to prevent accidentally revealing mail related credentials on the prod. server
         //dump(config('mail'));
