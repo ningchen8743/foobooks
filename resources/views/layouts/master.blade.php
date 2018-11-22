@@ -14,6 +14,7 @@
 
 <header>
     <a href='/'><img src='/images/foobooks-logo@2x.png' id='logo' alt='Foobooks Logo'></a>
+    @include('modules.nav')
 </header>
 
 <section>

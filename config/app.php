@@ -12,6 +12,14 @@ return [
     | any other location as required by the application or its packages.
     |
     */
+    'nav' => [
+        '/books' => 'Books',
+        '/books/create' => 'Add a book',
+        '/books/search' => 'Search',
+        '/practice' => 'Practice',
+        '/about' => 'About',
+        '/contact' => 'Contact',
+    ],
 
     'name' => 'Foobooks',
 
