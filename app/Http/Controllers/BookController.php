@@ -4,11 +4,17 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Book;
+
 class BookController extends Controller
 {
     public function index()
     {
-        return view('books.index');
+        $books = Book::orderBy('title')->get();
+
+        return view('books.index')->with([
+            'books' => $books
+        ]);
     }
 
     public function show($title)
