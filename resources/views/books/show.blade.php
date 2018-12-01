@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-    {{ $title }}
+    {{ $book->title }}
 @endsection
 
 @push('head')
@@ -10,9 +10,6 @@
 @endpush
 
 @section('content')
-    <h1>{{ $title }}</h1>
-
-    <p>
-        Details about this book will go here...
-    </p>
+    <h1>{{ $book->title }}</h1>
+    @include('books._book')
 @endsection

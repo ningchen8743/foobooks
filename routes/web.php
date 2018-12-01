@@ -23,7 +23,7 @@ Route::get('/books/search-process', 'BookController@searchProcess'); # <-- NEW 2
 Route::get('/books/create', 'BookController@create');
 Route::post('/books', 'BookController@store');
 
-Route::get('/books/{title}', 'BookController@show');
+Route::get('/books/{id}', 'BookController@show');
 Route::get('/books', 'BookController@index');
 
 Route::any('/practice/{n?}', 'PracticeController@index');

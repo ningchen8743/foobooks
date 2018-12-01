@@ -17,9 +17,10 @@ class BookController extends Controller
         ]);
     }
 
-    public function show($title)
+    public function show(Request $request, $id)
     {
-        return view('books.show')->with(['title'=>$title]);
+        $book=Book::find($id);
+        return view('books.show')->with(['book'=>$book]);
     }
     /**
      * GET
@@ -29,9 +30,9 @@ class BookController extends Controller
     public function search(Request $request)
     {
         return view('books.search')->with([
-            'searchTerm' => $request->session()->get('searchTerm', ''),
-            'caseSensitive' => $request->session()->get('caseSensitive', false),
-            'searchResults' => $request->session()->get('searchResults', []),
+            'searchTerm' => session('searchTerm', ''),
+            'caseSensitive' => session('caseSensitive', false),
+            'searchResults' => session('searchResults', []),
         ]);
     }
 
@@ -110,7 +111,7 @@ class BookController extends Controller
         # Validate the request data
         $request->validate([
             'title' => 'required',
-            'author' => 'required|alpha_num',
+            'author' => 'required|regex:/^[\pL\s\-]+$/u',
             'published_year' => 'required|digits:4',
             'cover_url' => 'required|url',
             'purchase_url' => 'required|url'
@@ -122,7 +123,17 @@ class BookController extends Controller
         # Code will eventually go here to add the book to the database,
         # but for now we'll just dump the form data to the page for proof of concept
 
-        dump($request->all());
+        $book = new Book();
+        $book->title = $request->input('title');
+        $book->author = $request->input('author');
+        $book->published_year = $request->input('published_year');
+        $book->cover_url = $request->input('cover_url');
+        $book->purchase_url = $request->input('purchase_url');
+        $book->save();
+
+        return redirect('/books')->with([
+            'alert' => 'Your book was added.'
+        ]);
     }
 
 }
