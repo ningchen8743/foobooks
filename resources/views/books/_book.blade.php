@@ -5,4 +5,5 @@
         <li>Added: {{$book->created_at->format('m/d/y g:ia')}}</li>
     </ul>
     <a href='/books/{{$book->id}}'>View</a>
+    <a href='/books/{{$book->id}}/edit'>Edit</a>
 </div>

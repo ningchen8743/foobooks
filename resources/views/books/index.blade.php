@@ -6,10 +6,6 @@
 
 @section('content')
 
-    @if(session('alert'))
-        <div class='alert'>{{ session('alert') }}</div>
-    @endif
-
     <h1>All books</h1>
 
     @foreach($books as $book)

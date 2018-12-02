@@ -31,4 +31,8 @@ Route::any('/practice/{n?}', 'PracticeController@index');
 Route::view('/about', 'about');
 Route::view('/contact', 'contact');
 
+# Show the form to edit a specific book
+Route::get('/books/{id}/edit', 'BookController@edit');
+# Process the form to edit a specific book
+Route::put('/books/{id}', 'BookController@update');
 

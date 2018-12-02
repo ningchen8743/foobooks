@@ -136,6 +136,45 @@ class BookController extends Controller
         ]);
     }
 
+
+    public function edit($id)
+    {
+        $book = Book::find($id);
+
+        if (!$book) {
+            return redirect('/books')->with([
+                'alert' => 'Book not found.'
+            ]);
+        }
+
+        return view('books.edit')->with([
+            'book' => $book
+        ]);
+    }
+
+    public function update(Request $request, $id)
+    {
+        $this->validate($request, [
+            'title' => 'required',
+            'author' => 'required',
+            'published_year' => 'required|digits:4|numeric',
+            'cover_url' => 'required|url',
+            'purchase_url' => 'required|url',
+        ]);
+
+        $book = Book::find($id);
+        $book->title = $request->input('title');
+        $book->author = $request->input('author');
+        $book->published_year = $request->input('published_year');
+        $book->cover_url = $request->input('cover_url');
+        $book->purchase_url = $request->input('purchase_url');
+        $book->save();
+
+        return redirect('/books/'.$id.'/edit')->with([
+            'alert' => 'Your changes were saved.'
+        ]);
+    }
+
 }
 
 
