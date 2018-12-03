@@ -36,3 +36,5 @@ Route::get('/books/{id}/edit', 'BookController@edit');
 # Process the form to edit a specific book
 Route::put('/books/{id}', 'BookController@update');
 
+Route::get('/books/{id}/delete-do-it', 'BookController@deletebook');
+

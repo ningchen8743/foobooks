@@ -6,4 +6,5 @@
     </ul>
     <a href='/books/{{$book->id}}'>View</a>
     <a href='/books/{{$book->id}}/edit'>Edit</a>
+    <a href='/books/{{$book->id}}/delete-do-it'>Delete</a>
 </div>

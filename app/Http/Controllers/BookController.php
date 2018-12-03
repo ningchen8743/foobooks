@@ -170,8 +170,26 @@ class BookController extends Controller
         $book->purchase_url = $request->input('purchase_url');
         $book->save();
 
-        return redirect('/books/'.$id.'/edit')->with([
+        return redirect('books'.$id.'/edit')->with([
             'alert' => 'Your changes were saved.'
+        ]);
+    }
+
+
+
+    public function deletebook($id)
+    {
+        $book = Book::find($id);
+
+        if (!$book) {
+            return redirect('/books')->with([
+                'alert' => 'Book not found.'
+            ]);
+        }
+
+        $book->delete();
+        return redirect('/books')->with([
+            'alert' => 'Your book has been deleted.'
         ]);
     }
 
